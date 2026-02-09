@@ -1,0 +1,254 @@
+.container-sobre{
+  width: 100%;
+  height: calc(250px + 200px);
+}
+
+.conteudo-sobre{
+  width: 100%;
+  height: 200vh;
+}
+
+.conteudo-sobre .texto{
+  width: inherit;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conteudo-sobre .texto p{
+  width: 90em;
+  padding: 0vw 9.86111111vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-size: 1.25vw;
+  line-height: 1.33;
+}
+
+.Mv{
+  height: 220vh;
+}
+
+.MvRight1{
+  background-image: url(//images.samsung.com/is/image/samsung/assets/br/about-us/company-info/AS.1_CompanyInfo_img02.jpg?$1440_N_PNG);
+  background-size: cover;
+  height: 30%;
+  width: 90%;
+  float: right;
+  border-radius: 20px 0 0 20px ;
+  display: flex;
+  align-items: center;
+}
+
+.Mv-texto{
+  width: 60%;
+  height: 80%;
+}
+
+.Mv-texto h2{
+  color: var(--cor2);
+  font-size: 2.63888889vw;
+  margin-left: .9em;
+  margin-bottom: 10px;
+}
+
+.Mv-texto p{
+  color: var(--cor2);
+  font-size: 1.25vw;
+  margin-left: 2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.MvLeft1{
+  background-image: url(//images.samsung.com/is/image/samsung/assets/br/about-us/company-info/AS.1_CompanyInfo_img03.1.jpg?$1440_N_PNG$);
+  background-size: cover;
+  height: 30%;
+  width: 90%;
+  float: left;
+  border-radius: 0 20px 20px 0 ;
+  display: flex;
+  align-items: center;
+}
+
+.MvRight2{
+  background-image: url(//images.samsung.com/is/image/samsung/assets/br/about-us/company-info/AS.1_CompanyInfo_img04.1.jpg?$1440_N_PNG$);
+  background-size: cover;
+  height: 30%;
+  width: 90%;
+  float: right;
+  border-radius: 20px 0 0 20px ;
+  display: flex;
+  align-items: center;
+}
+
+.MvRight1, .MvLeft1{
+  margin-bottom: 50px;
+}
+
+.Equipe{
+  height: 100vh;
+}
+
+.Titulo-equipe{
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Titulo-equipe p{
+  font-size: 2.63888889vw;
+}
+
+.Ceo-equipe{
+  height: 80%;
+}
+
+.img-ceo{
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px
+}
+
+.img-ceos{
+  height: 100%;
+  width: 20%;
+}
+
+.info-ceo{
+  height: calc(60px + 88px);
+}
+
+#Carlos{
+  background-image: url(https://g-futureti.netlify.app/ImagensEquipe/Carlos.jpeg);
+  background-size: cover;
+  background-position: right;
+  box-shadow: #0000002d 3px -1px 5px 0px;
+}
+
+#Saboia{
+  background-image: url(https://g-futureti.netlify.app/ImagensEquipe/Saboia.jpeg);
+  background-size: cover;
+  box-shadow: #0000002d 3px -1px 5px 0px;
+}
+
+.nome-ceo{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nome-ceo h2{
+  font-size: 2.25vw; 
+}
+
+.Informacoes-ceo{
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
+  margin-top: 20px;
+}
+
+.Informacoes-ceo ul li{
+  list-style: url(.);
+  font-size: .97222222vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.integrantes{
+  height: 120vh;
+}
+
+.Card-I{
+  height: 75vh;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: end;
+  justify-content: space-around; 
+   
+}
+
+.Card-Integrantes{
+  width: 200px;
+  height: 300px;
+  background-color: #000;
+  margin-left: 10px;
+}
+
+.Info-Integrantes{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nome-integrantes h2{
+  font-size: 1.5vw;
+  align-items: center;
+}
+
+.nome-integrantes{
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#JoaoL{
+  background-image: url(https://g-futureti.netlify.app/ImagensEquipe/JoaoL.jpeg);
+  background-size: cover;
+  box-shadow: #1616163b 3px -1px 5px 0px;
+}
+
+.JoaoL ul li{
+  font-size: .89222222vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#Isaac{
+  background-image: url(https://g-futureti.netlify.app/ImagensEquipe/Isaac.jpeg);
+  background-size: cover;
+  box-shadow: #1616163b 3px -1px 5px 0px;
+}
+
+.Isaac ul li{
+  font-size: .89222222vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#MiguelF{
+  background-image: url(https://g-futureti.netlify.app/ImagensEquipe/MiguelF.jpeg);
+  background-size: cover;
+  box-shadow: #1616163b 3px -1px 5px 0px;
+}
+
+.MiguelF ul li{
+  font-size: .89222222vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#MiguelL{
+  background-image: url(https://g-futureti.netlify.app/ImagensEquipe/MiguelL.jpeg);
+  background-size: cover;
+  box-shadow: #1616163b 3px -1px 5px 0px;
+}
+
+.MiguelL ul li{
+  font-size: .89222222vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Funcoes-Integrantes{
+  height: calc(30vh + 16px);
+}
+
+.Funcoes{
+  width: 100%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+}
+

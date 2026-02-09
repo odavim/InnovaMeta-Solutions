@@ -1,0 +1,87 @@
+/* navbar.css - estilo global da navbar */
+
+nav {
+  background-color: #0a0b0f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  position: fixed;
+  padding: 0 1rem;
+}
+
+#img-logo {
+  width: 100px;
+  height: 100px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav li {
+  display: inline-block;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  color: rgba(21, 181, 112, 0.712);
+}
+
+#login {
+  border: 2px solid rgba(21, 181, 112, 0.712);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+}
+
+/* Botão com borda alinhado */
+nav ul li button.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Dropdown */
+.dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  background-color: rgba(21, 181, 112, 0.712);
+  color: #fff;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s ease;
+}
+.dropdown-toggle:hover {
+  background-color: rgb(21, 181, 112);
+  color: #000;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  z-index: 999;
+}
+.dropdown-menu.show { display: block !important; }

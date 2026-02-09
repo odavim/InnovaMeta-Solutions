@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- BODY: Responsividade e Fundo --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Usando a mesma cor de fundo do Login para consistência */
+    background-color: #0a0b0f; 
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Usa min-height para evitar corte em celulares */
+    min-height: 100vh; 
+    padding: 20px; /* Garante que não grude nas bordas */
+    margin: 0;
+    box-sizing: border-box;
+    /* Define o flex-direction column para acomodar o link de "Já tem conta?" fora do container */
+    flex-direction: column; 
+}
+
+/* --- CONTAINER: Estilo e Sombra --- */
+#container {
+    /* Usando #121212 como fundo do container para um Dark Mode mais suave */
+    background: #121212; 
+    padding: 2rem; /* Padding ligeiramente menor para telas pequenas */
+    border-radius: 16px;
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+    /* Sombra mais elegante */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+    box-sizing: border-box;
+}
+
+/* --- Barra de Progresso --- */
+#barra {
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+#barra div {
+    height: 100%;
+    /* Usando a cor primária do Login (#15b570) */
+    background: #15b570; 
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* --- Passos do Formulário --- */
+.step {
+    display: none;
+    flex-direction: column;
+    gap: 1.2rem; /* Mantido seu espaçamento */
+}
+
+.step.active {
+    display: flex;
+}
+
+/* --- Labels e Inputs --- */
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #ccc;
+}
+
+input,
+select {
+    padding: 12px;
+    border: 1px solid #333;
+    /* Fundo dos campos ligeiramente mais claro que o container */
+    background: #1f1f1f; 
+    color: #fff;
+    border-radius: 8px; /* Ajuste para combinar com o estilo do Login */
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #15b570; /* Cor primária no foco */
+    box-shadow: 0 0 0 3px rgba(21, 181, 112, 0.2); /* Brilho suave */
+    outline: none;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+/* --- Botões de Navegação (Avançar/Cadastrar) --- */
+.nav {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem; /* Mais espaço para o botão principal */
+}
+
+.nav button {
+    /* Herda o estilo do container, mas ajusta para o nav */
+    background: #15b570; 
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    margin-top: 0; /* Remove a margem superior extra */
+}
+
+.nav button:hover {
+    background: #11965f; /* Hover mais escuro para consistência */
+}
+
+.nav .voltar {
+    background: #333;
+}
+
+.nav .voltar:hover {
+    background: #555;
+}
+
+/* --- Avisos e Erros --- */
+.erro,
+.aviso {
+    font-size: 0.85rem;
+    color: #ff4d4d;
+    margin-top: 0.25rem;
+}
+.aviso { /* O aviso de força de senha deve ser mais suave */
+    color: #ccc; 
+}
+
+/* --- Link de Login --- */
+.signup {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+.signup a {
+    color: #15b570; /* Cor primária */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.signup a:hover {
+    color: #11965f;
+    text-decoration: underline;
+}
+
+
+/* --- Campos Especiais (Data de Nascimento) --- */
+/* Remove o display:flex no HTML para usar uma classe CSS mais específica */
+.data-nascimento-group {
+    display: flex; 
+    gap: 0.5rem; 
+}
+
+.data-nascimento-group input,
+.data-nascimento-group select {
+    /* Sobrescreve o width: 100% dos inputs genéricos */
+    width: auto !important; 
+    flex-grow: 1;
+}
+/* Estilo para garantir que os campos de data se ajustem bem em móvel */
+.data-nascimento-group input[placeholder="dd"] {
+    max-width: 70px;
+}
+.data-nascimento-group input[placeholder="aaaa"] {
+    max-width: 90px;
+}
+.data-nascimento-group select {
+    flex-grow: 1;
+}
+
+/* --- Gênero como Checkbox/Radio (Ajuste Visual) --- */
+/* Seu código HTML usa label e input radio, vamos estilizar isso */
+.genero-opcoes label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Estilo de botão/tag para opções de gênero */
+    background: #1a1a1a;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.genero-opcoes label:hover {
+    background: #2a2a2a;
+}
+
+/* Esconde o radio button nativo, deixando apenas o estilo do label */
+.genero-opcoes input[type="radio"] {
+    display: none;
+}
+
+/* Opcional: Adiciona um efeito visual quando o radio está marcado */
+.genero-opcoes input[type="radio"]:checked + span {
+    color: #15b570;
+    font-weight: 700;
+}

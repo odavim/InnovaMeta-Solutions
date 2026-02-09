@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "SamsungOne-700";
+  src: url("https://db.onlinewebfonts.com/t/00487ece712f86b9b503997ceb17daff.eot");
+  src: url("https://db.onlinewebfonts.com/t/00487ece712f86b9b503997ceb17daff.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/00487ece712f86b9b503997ceb17daff.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/00487ece712f86b9b503997ceb17daff.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/00487ece712f86b9b503997ceb17daff.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/00487ece712f86b9b503997ceb17daff.svg#SamsungOne-700")format("svg");
+}
+
+.index-login{
+    background-image: url(https://images.samsung.com/is/image/samsung/assets/br/about-us/company-info/AS.1_CompanyInfo_img01.1.png?$1920_N_JPG$);
+    background-repeat: no-repeat;
+    background-position: right top;
+  }
+  
+  .Container-Login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .Bloco-Login{
+    background-color: rgba(255, 255, 255, 0.774);
+    width: 75%;
+    height: 85vh;
+    border-radius: 15px;
+  }
+
+  .
+
+  .textlinks{
+    text-decoration: underline;
+  }
+  
+  .textlinks:hover{
+    opacity: 0.7;
+  }
