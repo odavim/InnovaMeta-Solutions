@@ -1,0 +1,13 @@
+# Credenciais e configuração local
+src/config.local.php
+.env
+
+# Dados e dumps com informações pessoais
+*.sql.bak
+contatos_recebidos.txt
+backup*.sql
+
+# Editor / sistema
+.vscode/
+.DS_Store
+Thumbs.db

@@ -105,14 +105,6 @@ CREATE TABLE `orcamentos` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `orcamentos`
---
-
-INSERT INTO `orcamentos` (`id`, `codigo`, `usuario_id`, `plano_id`, `titulo`, `descricao_projeto`, `prazo_desejado`, `orcamento_maximo`, `orcamento_base`, `orcamento_negociado`, `orcamento_final`, `status`, `observacoes`, `created_at`, `updated_at`) VALUES
-(1, 'ORC202511058656', 13, 1, 'Orçamento - Solutions', 'rgiuhliwe', '2 meses', 20000.00, 750.00, 5000.00, NULL, 'aprovado', NULL, '2025-11-05 13:44:24', '2025-11-05 13:48:07'),
-(2, 'ORC202511058859', 14, 2, 'Orçamento - Innova', 'site terapeuta aura', '2 meses', 3000.00, 2500.00, 2600.00, NULL, 'aprovado', NULL, '2025-11-05 14:07:15', '2025-11-05 14:09:43'),
-(3, 'ORC202511059405', 13, 3, 'Orçamento - Meta', 'khdvbiH V', '3 meses', 5252525.00, 1500.00, NULL, NULL, 'aprovado', NULL, '2025-11-05 14:11:13', '2025-11-05 14:11:49');
 
 -- --------------------------------------------------------
 
@@ -207,17 +199,6 @@ CREATE TABLE `usuarios` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `telefone`, `cpf`, `data_nascimento`, `genero`, `senha`, `nivel`, `reset_token`, `reset_token_expira`, `ativo`, `created_at`, `updated_at`) VALUES
-(6, 'fruit', 'davidnea1234@gmail.com', '(21) 98773-6603', '206.839.777-33', '2007-12-06', 'homem', '$2y$10$Dz5ksKSfVP32lsi/AyiNruqHVk.1IZGjbX2fXwSZqDqGGVqCHAm/G', 'admin', '248a637aa1536c3613a1bef97bd15c3201eab53d1317c8f1a7bf37b4b6383b32', '2025-10-22 04:32:32', 1, '2025-07-16 06:58:05', '2025-10-22 07:32:32'),
-(10, 'arthur nea', 'sararadolixo@gmail.com', '(21) 96803-1634', '463.222.478-1', '2013-07-12', 'homem', '$2y$10$uCw7DbK.VgHC2cWjQMg3zuOgVxOqMvy6ED4A0BxeBV1MRhuSg9uN2', 'cliente', NULL, NULL, 1, '2025-07-17 01:46:42', '2025-07-17 01:46:42'),
-(11, 'MARCELE CRISTINA', 'marcelecristina47@gmail.com', '(21) 98285-6312', '169.833.277-22', '1988-09-10', 'mulher', '$2y$10$HrqFhjSr38DAtjkhi0jk.u6mxzZA.KxIhHGBkw6sOEY6SKGskwq2m', 'cliente', NULL, NULL, 1, '2025-07-29 00:09:16', '2025-07-29 00:09:16'),
-(12, 'FABIO DE OLIVEIRA RODRIGUES', 'fabiochico25@gmail.com', '(21) 96462-1921', '092.689.767-57', '1980-04-08', 'homem', '$2y$10$.PO17qvmG5qN7CfHGgxU7uJWJZtcY8RsZ19zDYQa2gRIem99xbIN2', 'cliente', NULL, NULL, 1, '2025-07-31 21:00:52', '2025-07-31 21:00:52'),
-(13, 'Davi', 'odavisuporte@gmail.com', '(21) 99914-2907', '150.002.567-43', '2007-08-29', 'homem', '$argon2id$v=19$m=65536,t=4,p=1$UnFyV1lCYzBSWGRnUFlaLg$dQh30RO04Cu759jSuAe3uUGBlqQG8Xv1XPY4Fp9nyWg', 'admin', NULL, NULL, 1, '2025-11-05 13:43:42', '2025-11-05 13:44:44'),
-(14, 'Lucas', 'lcRajada@gmail.com', '(21) 97685-3385', '052.467.837-58', '2008-06-02', 'homem', '$argon2id$v=19$m=65536,t=4,p=1$ODd2ellKdzVkYm0xQzY2cg$HLUG0k+y5syXHQEuUVEer1iVA5qFF+HmfjjV2gc5Zx0', 'cliente', NULL, NULL, 1, '2025-11-05 14:06:41', '2025-11-05 14:06:41');
 
 --
 -- Índices para tabelas despejadas

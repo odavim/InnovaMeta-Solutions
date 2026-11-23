@@ -1,5 +1,6 @@
 <?php
 require_once '../conexao.php';
+require_once '../config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -34,44 +35,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($resultado->num_rows > 0) {
             $usuario = $resultado->fetch_assoc();
             $token = bin2hex(random_bytes(32));
+            $tokenHash = hash('sha256', $token); // só o hash vai para o banco
             $expira = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
             // Atualiza token no banco
             $update = $conn->prepare("UPDATE usuarios SET reset_token = ?, reset_token_expira = ? WHERE id = ?");
-            $update->bind_param("ssi", $token, $expira, $usuario['id']);
+            $update->bind_param("ssi", $tokenHash, $expira, $usuario['id']);
             
             if ($update->execute()) {
                 // Link de redefinição
-                // ATENÇÃO: SUBSTITUA 'http://localhost/Innovameta' PELO SEU DOMÍNIO DE PRODUÇÃO
-                $dominio = "http://localhost/Innovameta";
-                $link = "$dominio/redefinir_senha.php?token=$token";
+                $dominio = rtrim(config('base_url', 'http://localhost/Innovameta/src'), '/');
+                $link = "$dominio/pages/redefinir_senha.php?token=$token";
 
                 // Configura PHPMailer
                 $mail = new PHPMailer(true);
                 try {
                     // Configurações do servidor SMTP
                     $mail->isSMTP();
-                    $mail->Host = 'smtp.gmail.com';
+                    $mail->Host = config('smtp_host', 'smtp.gmail.com');
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'davidnea1234567@gmail.com'; // ⚠️ SEU E-MAIL REMETENTE
-                    $mail->Password = 'maxf urqn hpbo bowd'; // ⚠️ SUA SENHA/APP PASSWORD
+                    $mail->Username = config('smtp_user');
+                    $mail->Password = config('smtp_pass');
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                    $mail->Port = 587;
+                    $mail->Port = (int) config('smtp_port', 587);
                     $mail->CharSet = 'UTF-8';
-                    
-                    // Configurações adicionais para melhor compatibilidade
-                    $mail->SMTPOptions = array(
-                        'ssl' => array(
-                            'verify_peer' => false,
-                            'verify_peer_name' => false,
-                            'allow_self_signed' => true
-                        )
-                    );
                     $mail->Timeout = 30;
 
                     // Remetente e nome exibido
-                    $mail->setFrom('davidnea1234567@gmail.com', 'Suporte InnovaMeta');
-                    $mail->addReplyTo('davidnea1234567@gmail.com', 'Suporte InnovaMeta');
+                    $mail->setFrom(config('smtp_user'), 'Suporte InnovaMeta');
+                    $mail->addReplyTo(config('smtp_user'), 'Suporte InnovaMeta');
 
                     // Destinatário
                     $mail->addAddress($email, $usuario['nome'] ?? '');
@@ -84,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $mail->Body = "
                         <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
                             <h2 style='color: #008060; text-align: center;'>Recuperação de senha</h2>
-                            <p>Olá " . ($usuario['nome'] ?? '') . ",</p>
+                            <p>Olá " . htmlspecialchars($usuario['nome'] ?? '') . ",</p>
                             <p>Você solicitou a redefinição da sua senha. Clique no botão abaixo para continuar:</p>
                             <p style='text-align: center;'>
                                 <a href='$link' style='padding:12px 25px; background:#008060; color:white; text-decoration:none; border-radius: 8px; display: inline-block; font-weight: bold;'>

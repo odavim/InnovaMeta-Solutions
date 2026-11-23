@@ -1,4 +1,5 @@
 <?php
+require_once 'auth.php'; // somente admin
 require_once 'conexao.php';
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=relatorio_usuarios.csv');

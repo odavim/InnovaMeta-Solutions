@@ -6,19 +6,15 @@ $mensagem = '';
 $token = $_GET['token'] ?? '';
 $form_valido = false;
 
-// DEBUG: Verificar se o token está chegando
-error_log("Token recebido na URL: " . $token);
-
 // 1. Verifica se o token existe e não expirou
 if ($token) {
     $stmt = $conn->prepare("SELECT id, reset_token_expira FROM usuarios WHERE reset_token = ?");
-    $stmt->bind_param("s", $token);
+    $stmt->bind_param("s", hash('sha256', $token));
     $stmt->execute();
     $resultado = $stmt->get_result();
 
     if ($resultado->num_rows === 0) {
         $mensagem = "Token inválido ou já utilizado.";
-        error_log("Token não encontrado no banco: " . $token);
     } else {
         $usuario = $resultado->fetch_assoc();
         $expiracao = strtotime($usuario['reset_token_expira']);
@@ -47,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['senha'], $_POST['conf
     $confirmar = $_POST['confirmar'];
     $token_form = $_POST['token'];
 
-    error_log("Formulário enviado - Token: " . $token_form);
 
     // Validações
     if ($senha !== $confirmar) {
@@ -59,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['senha'], $_POST['conf
     } else {
         // Primeiro verifica se o token ainda é válido
         $check_stmt = $conn->prepare("SELECT id FROM usuarios WHERE reset_token = ? AND reset_token_expira > NOW()");
-        $check_stmt->bind_param("s", $token_form);
+        $check_stmt->bind_param("s", hash('sha256', $token_form));
         $check_stmt->execute();
         $check_result = $check_stmt->get_result();
         
@@ -70,12 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['senha'], $_POST['conf
             // Atualiza senha e remove token
             $hash = password_hash($senha, PASSWORD_DEFAULT);
             $update = $conn->prepare("UPDATE usuarios SET senha = ?, reset_token = NULL, reset_token_expira = NULL WHERE reset_token = ?");
-            $update->bind_param("ss", $hash, $token_form);
+            $update->bind_param("ss", $hash, hash('sha256', $token_form));
             
             if ($update->execute()) {
                 $mensagem = "Senha alterada com sucesso! Agora você já pode fazer login.";
                 $form_valido = false;
-                error_log("Senha redefinida com sucesso para token: " . $token_form);
             } else {
                 $mensagem = "Erro ao redefinir senha. Tente novamente.";
                 $form_valido = true;
@@ -161,15 +155,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['senha'], $_POST['conf
         <p class="mensagem-status <?= (strpos($mensagem, 'sucesso') !== false) ? 'sucesso' : 'erro' ?>">
             <?= htmlspecialchars($mensagem) ?>
         </p>
-    <?php endif; ?>
-
-    <!-- DEBUG: Mostrar token para teste (remova em produção) -->
-    <?php if ($token && $mensagem): ?>
-        <div class="debug-info">
-            <strong>Debug Info:</strong><br>
-            Token: <?= htmlspecialchars($token) ?><br>
-            URL Completa: <?= $_SERVER['REQUEST_URI'] ?>
-        </div>
     <?php endif; ?>
 
     <?php if ($form_valido): ?>
