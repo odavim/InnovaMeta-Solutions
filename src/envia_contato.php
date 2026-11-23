@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/config.php';
 
 // Inclui o PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
@@ -10,7 +11,7 @@ require 'PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/src/SMTP.php';
 
 // Configurações
-$destinatario = "innovametasolutions@gmail.com"; // SEU EMAIL QUE RECEBERÁ AS MENSAGENS
+$destinatario = config('contato_destino'); // E-mail que recebe as mensagens (config.local.php)
 $assunto_site = "Contato pelo Site - InnovaMeta Solutions";
 
 // Verifica se o formulário foi submetido
@@ -50,27 +51,19 @@ try {
     // Configurações do servidor - GMAIL
     $mail->SMTPDebug = 0; // Mude para 2 para ver detalhes do erro
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
+    $mail->Host = config('smtp_host', 'smtp.gmail.com');
     $mail->SMTPAuth = true;
-    $mail->Username = 'innovametasolutions@gmail.com'; // SEU EMAIL GMAIL
-    $mail->Password = 'gvsp cvmm pdvm bfwh'; // SUA SENHA DE APP
+    $mail->Username = config('smtp_user');
+    $mail->Password = config('smtp_pass');
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = 587;
-
-    $mail->SMTPOptions = [
-    'ssl' => [
-        'verify_peer'       => false,
-        'verify_peer_name'  => false,
-        'allow_self_signed' => true,
-    ]
-];
+    $mail->Port = (int) config('smtp_port', 587);
     
     // Configurações adicionais importantes
     $mail->Timeout = 30; // Timeout de 30 segundos
     $mail->CharSet = 'UTF-8';
     
     // Remetente e destinatário - CORRIGIDO
-    $mail->setFrom('innovametasolutions@gmail.com', 'Site InnovaMeta'); // DEVE SER O MESMO EMAIL DO GMAIL
+    $mail->setFrom(config('smtp_user'), 'Site InnovaMeta');
     $mail->addAddress($destinatario); // PARA ONDE VOCÊ QUER RECEBER
     $mail->addReplyTo($email, $nome); // PARA RESPONDER DIRETO PARA QUEM ENVIOU
     
@@ -102,7 +95,7 @@ Data/Hora: " . date('d/m/Y H:i:s');
     error_log("Erro PHPMailer: " . $e->getMessage());
     error_log("Erro detalhado: " . $mail->ErrorInfo);
     
-    $msg_erro = "Erro no envio: " . $e->getMessage();
+    $msg_erro = "Não foi possível enviar sua mensagem agora. Tente novamente mais tarde.";
     header("Location: contato.php?status=error&msg=" . urlencode($msg_erro));
     exit;
 }

@@ -332,7 +332,7 @@ $nomeUsuario = $_SESSION['usuario_nome'] ?? $_SESSION['usuario'] ?? null;
 - Design específico?
 - Integrações necessárias?
 - Conteúdo que já possui?" 
-                        required><?= $_POST['descricao'] ?? '' ?></textarea>
+                        required><?= htmlspecialchars($_POST['descricao'] ?? '', ENT_QUOTES, 'UTF-8') ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="prazo">Prazo desejado:</label>
@@ -355,7 +355,7 @@ $nomeUsuario = $_SESSION['usuario_nome'] ?? $_SESSION['usuario'] ?? null;
                         placeholder="R$"
                         min="0"
                         step="0.01"
-                        value="<?= $_POST['orcamento_maximo'] ?? '' ?>">
+                        value="<?= htmlspecialchars($_POST['orcamento_maximo'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
                 </div>
 
                 <button type="submit" class="btn-enviar">

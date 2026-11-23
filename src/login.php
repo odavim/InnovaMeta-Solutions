@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($resultado->num_rows > 0) {
             $usuario = $resultado->fetch_assoc();
             if (password_verify($senha, $usuario['senha'])) {
+                session_regenerate_id(true); // evita fixação de sessão
                 // Salva todas as informações necessárias
                 $_SESSION['usuario_id'] = $usuario['id']; // ID do usuário
                 $_SESSION['usuario_nome'] = $usuario['nome']; // Nome

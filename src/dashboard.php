@@ -192,7 +192,7 @@ $orcamentos = $conn->query("
         <button type="submit" class="btn-purple"><i class="fas fa-filter"></i> Filtrar</button>
       </form>
       <div class="export-buttons">
-        <a href="relatorio_usuarios.php"><button class="btn-purple"><i class="fas fa-file-csv"></i> Exportar Usuários</button></a>
+        <a href="relatorio.php"><button class="btn-purple"><i class="fas fa-file-csv"></i> Exportar Usuários</button></a>
         <a href="relatorio_orcamentos.php"><button class="btn-purple"><i class="fas fa-file-csv"></i> Exportar Orçamentos</button></a>
         <a href="dashboard_orcamentos.php"><button class="btn-purple"><i class="fas fa-file-invoice"></i> Gerenciar Orçamentos</button></a>
       </div>
