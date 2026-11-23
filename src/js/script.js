@@ -23,26 +23,4 @@ menuToggle?.addEventListener('click', () => {
   menu.classList.toggle('show');
 });
 
-// Adicionar produto ao carrinho
-document.querySelectorAll('.btn-comprar').forEach(botao => {
-    botao.addEventListener('click', function() {
-        const produto_id = this.dataset.id;
-        fetch('./src/pages/adicionar_carrinho.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'produto_id=' + produto_id
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                alert("Produto adicionado ao carrinho!");
-            } else if (data.redirect) {
-                window.location.href = data.redirect;
-            } else {
-                alert("Erro ao adicionar produto.");
-            }
-        })
-        .catch(() => alert("Erro na comunicação com o servidor."));
-    });
-});
 

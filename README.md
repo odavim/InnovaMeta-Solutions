@@ -20,7 +20,7 @@ Site institucional e sistema de orçamentos da InnovaMeta Solutions (projeto de 
 ## Estrutura
 - `index.php` — página inicial
 - `src/` — páginas, dashboards e lógica
-- `src/pages/` — carrinho, recuperação/redefinição de senha, logout
+- `src/pages/` — recuperação/redefinição de senha, pagamento do orçamento, logout, contato
 - `src/portfolios/` — projetos antigos da equipe (linkados em "Sobre")
 - `src/PHPMailer-master/` — biblioteca de e-mail
 

@@ -88,7 +88,6 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'admin') {
     <ul class="sidebar-menu">
         <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
         <li><a href="dashboard_precos.php"><i class="fas fa-tags"></i> Gerenciar Preços</a></li>
-        <li><a href="dashboard_carrinhos.php"><i class="fas fa-shopping-cart"></i> Carrinhos</a></li>
         <li><a href="dashboard_configuracoes.php" class="active"><i class="fas fa-cog"></i> Configurações</a></li>
         <li><a href="../index.php"><i class="fas fa-home"></i> Voltar ao Início</a></li>
     </ul>
@@ -104,37 +103,11 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'admin') {
 
     <div class="config-container">
         <div class="config-section">
-            <h3><i class="fas fa-shopping-cart"></i> Configurações de E-commerce</h3>
-            <form method="POST" action="salvar_configuracoes.php">
-                <div class="form-group">
-                    <label>Frete Grátis a partir de:</label>
-                    <input type="number" name="frete_gratis" step="0.01" placeholder="0.00">
-                </div>
-                <div class="form-group">
-                    <label>Taxa de Frete Padrão:</label>
-                    <input type="number" name="taxa_frete" step="0.01" placeholder="0.00">
-                </div>
-                <div class="form-group">
-                    <label>Prazo de Entrega (dias):</label>
-                    <input type="number" name="prazo_entrega" placeholder="7">
-                </div>
-                <button type="submit" class="btn-save"><i class="fas fa-save"></i> Salvar Configurações</button>
-            </form>
-        </div>
-
-        <div class="config-section">
             <h3><i class="fas fa-bell"></i> Notificações</h3>
             <form method="POST" action="salvar_configuracoes.php">
                 <div class="form-group">
                     <label>Email para Notificações:</label>
                     <input type="email" name="email_notificacoes" placeholder="admin@innovameta.com">
-                </div>
-                <div class="form-group">
-                    <label>Notificar novos pedidos:</label>
-                    <select name="notificar_pedidos">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
-                    </select>
                 </div>
                 <button type="submit" class="btn-save"><i class="fas fa-save"></i> Salvar Notificações</button>
             </form>
