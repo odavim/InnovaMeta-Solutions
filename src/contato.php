@@ -8,7 +8,6 @@ if (empty($_SESSION['csrf_token'])) {
 
 $logado = isset($_SESSION['usuario_id']);
 $nomeUsuario = $_SESSION['usuario_nome'] ?? $_SESSION['usuario'] ?? null;
-$totalCarrinho = 0; 
 
 // Variáveis para mensagens de status
 $status_message = '';
